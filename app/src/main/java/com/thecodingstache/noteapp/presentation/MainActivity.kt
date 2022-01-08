@@ -14,8 +14,5 @@ class MainActivity : ComponentActivity() {
             NoteApp {
             }
         }
-        GlobalScope.launch() {
-
-        }
     }
 }

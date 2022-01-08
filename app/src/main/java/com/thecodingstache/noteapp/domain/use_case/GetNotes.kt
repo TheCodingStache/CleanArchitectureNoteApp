@@ -7,12 +7,8 @@ import com.thecodingstache.noteapp.domain.util.OrderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class GetNotes(
-    private val repository: NoteRepository
-) {
-    operator fun invoke(
-        noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)
-    ): Flow<List<Note>> {
+class GetNotes(private val repository: NoteRepository) {
+    operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)): Flow<List<Note>> {
         return repository.getNotes().map { notes ->
             when (noteOrder.orderType) {
                 is OrderType.Ascending -> {
