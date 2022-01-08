@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.thecodingstache.noteapp.data.data_source.NoteDatabase
 import com.thecodingstache.noteapp.data.data_source.repository.NoteRepositoryImpl
 import com.thecodingstache.noteapp.domain.repository.NoteRepository
+import com.thecodingstache.noteapp.domain.use_case.AddNote
 import com.thecodingstache.noteapp.domain.use_case.DeleteNote
 import com.thecodingstache.noteapp.domain.use_case.GetNotes
 import com.thecodingstache.noteapp.domain.use_case.NoteUseCases
@@ -37,8 +38,9 @@ object AppModule {
     @Singleton
     fun providedNoteUseCases(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
-            getNotes = GetNotes(repository),
-            deleteNotes = DeleteNote(repository)
+            getNote = GetNotes(repository),
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository)
         )
     }
 }
